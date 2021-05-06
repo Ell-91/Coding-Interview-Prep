@@ -45,6 +45,7 @@ class linkedList:
 
   #insert after a given node in the list 
   def insert_arbitrarily(self, prev_node, data):
+    self.numOfNodes += 1
     
     #determine if the previous node is present in the list
     if not prev_node:   #if prev_node is not in the list
@@ -64,6 +65,7 @@ class linkedList:
   # 1. Node to be deleted is head
   # 2. Node to be deleted is not head
   def delete(self,data_key):
+    self.numOfNodes -= 1
     current_node = self.head #set curret node to be the head of the list
     
     #Case 1: delete the head node
@@ -89,7 +91,9 @@ class linkedList:
     prev_node.next = current_node.next
     current_node = None
 
-  def delete_position(self, position, data):
+  #def delete_position(self, position, data):
+  def sizeOflist(self):
+    return print(self.numOfNodes)
 
 llist = linkedList()
 llist.append("A")
@@ -102,7 +106,10 @@ llist.append("D")
 #print(llist.head.next.data) #---> B
 
 #llist.insert_arbitrarily(llist.head.next, "E")
-#llist.print_list()
+
 
 llist.delete("B")
+llist.delete("A")
+
+llist.sizeOflist()
 llist.print_list()
