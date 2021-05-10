@@ -36,8 +36,8 @@ class linkedList:
 
   def remove(self, data):
     self.numOfnodes -= 1
-    if self.head is not None: #LL is empty, doesn't return anything
-      return print("The Linkd list is empty")
+    if self.head is None: #LL is empty, doesn't return anything
+      return print("The Linked list is empty")
     
     current_node = self.head
     prev_node = None 
