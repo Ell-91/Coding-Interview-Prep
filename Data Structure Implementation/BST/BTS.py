@@ -9,7 +9,7 @@ class Node:
 
 class BinarySearchTree:
 
-    def __init__(self):
+    def __init__(self): #for this constructor, just define the root node
         self.root = None
 
     def remove(self, data):
@@ -25,8 +25,9 @@ class BinarySearchTree:
     def insert_node(self, data, node):
         # we have to go to the left subtree
         if data < node.data: #Go to left
-            if node.left_node: #check if a given node is already present
-                self.insert_node(data, node.left_node)
+            if node.left_node: #node has a left child
+                self.insert_node(data, node.left_node) #so insert the node on the data
+                #recursivly call this function with the leftchild of the current node
             else:
                 node.left_node = Node(data, node) #else a node isn't already present and we create one
         # we have to visit the right subtree
@@ -116,12 +117,14 @@ class BinarySearchTree:
             self.traverse_in_order(self.root)
 
     def traverse_in_order(self, node):
+        #visit left subtree
+        if node.left_node: #if node has a valid leftChild
+            self.traverse_in_order(node.left_node) #keep calling it recursivly on the left subtree, keep visiting the left subtree
 
-        if node.left_node:
-            self.traverse_in_order(node.left_node)
-
+        #if it is the root node print
         print(node.data)
 
+        #visit right subtree 
         if node.right_node:
             self.traverse_in_order(node.right_node)
 
