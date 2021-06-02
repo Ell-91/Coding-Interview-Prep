@@ -65,11 +65,10 @@ def getMin(self,node):
 
 def find(self,data): #want to find a node that has the data element
   if self.root:
-    is_found = self.find_value(data,self.root) #returns a boolean value to let us knw if the value is in the tree
-    if is_found:
+    found = self.find_value(data,self.root) #returns a boolean value to let us knw if the value is in the tree
+    if found:
       return True
     return False 
-
   else:
     return None #no nodes in the tree
 

@@ -39,15 +39,17 @@ class BinarySearchTree:
 
     def remove_node(self, data, node):
 
-        if node is None:
+        if node is None: #to remove a given node, we have to first find that node
             return
 
+        #first find the node we want to remove
         if data < node.data:
             self.remove_node(data, node.left_node)
         elif data > node.data:
             self.remove_node(data, node.right_node)
         else:
 
+#Case 1: Remove a leaf node
             if node.left_node is None and node.right_node is None:
                 print("Removing a leaf node...%d" % node.data)
 
@@ -58,11 +60,12 @@ class BinarySearchTree:
                 if parent is not None and parent.right_node == node:
                     parent.right_node = None
 
+                #If parent is a root node, set root equal to None
                 if parent is None:
                     self.root = None
 
                 del node
-
+#Case 2a: Remove a node with 1 right child
             elif node.left_node is None and node.right_node is not None:  # node !!!
                 print("Removing a node with single right child...")
 
@@ -79,6 +82,7 @@ class BinarySearchTree:
                 node.right_node.parent = parent
                 del node
 
+#Case 2b: Remove a node with one left child
             elif node.right_node is None and node.left_node is not None:
                 print("Removing a node with single left child...")
 
@@ -95,6 +99,8 @@ class BinarySearchTree:
                 node.left_node.parent = parent
                 del node
 
+#Case 3: Remove a node with two children (find predecessor)
+#        Predecessor: largest node in the right subtree
             else:
                 print('Removing node with two children....')
 

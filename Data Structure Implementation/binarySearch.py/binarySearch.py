@@ -20,7 +20,7 @@ def binarySearch(array,key):
 
 	
 array  = [0, 1, 2, 8, 13, 17, 19, 32, 42,]
-key = 8
+key = 17
 
 print(binarySearch(array, key))
 
